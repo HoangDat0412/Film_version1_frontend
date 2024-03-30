@@ -1,0 +1,58 @@
+.dt-search{
+    color: black  !important;
+  }
+.dt-column-order{
+    display: inline-block;
+    width: 10px;
+    height: 19px;
+    background: #000;
+}
+
+.dt-column-order{
+    margin-left: 5px;
+    display: inline-block;
+    width: 15px;
+    height: 19px;
+    background: url('../../assets/sort.svg');
+    background-position: center;
+    position: absolute;
+    top: 10px;
+    background-repeat: no-repeat;
+}
+
+.table_data thead tr th {
+    position: relative;
+}
+
+.table_user thead tr th:nth-child(5){
+    .dt-column-order{
+        display: none;
+    }
+}
+.table_user thead tr th:nth-child(6){
+    .dt-column-order{
+        display: none;
+    }
+}
+
+.table_vnpay thead tr th:nth-child(6){
+    .dt-column-order{
+        display: none;
+    }
+}
+
+.table_film thead tr th:nth-child(4){
+    .dt-column-order{
+        display: none;
+    }
+}
+.table_film thead tr th:nth-child(5){
+    .dt-column-order{
+        display: none;
+    }
+}
+.table_film thead tr th:nth-child(6){
+    .dt-column-order{
+        display: none;
+    }
+}
