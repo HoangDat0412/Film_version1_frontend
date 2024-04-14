@@ -65,7 +65,7 @@ const handleUpdate = async () => {
     yRelease: yRelease.value,
     director: director.value,
     status: status.value,
-    img: img.value,
+    imgurl: img.value,
     country: country.value,
     time:time.value,
     trailerurl:trailerurl.value,
