@@ -11,12 +11,10 @@ const route = useRoute()
 const search = ref("");
 const film = useFilmStore()
 const handleSearch = async () => {
-
   if (route.name !== "search") {
-    film.setSearchKey("name")
-    router.push({ path: `search/${search.value}` })
-  } else {
-    film.setSearchKey("name")
+    router.push({ path: `/search/${search.value}` })
+  }
+  else {
     router.push({ path: `${search.value}` })
   }
   search.value = ""
@@ -87,39 +85,28 @@ onBeforeUpdate(() => {
               <ul class="dropdown_menu dropdown-menu ">
                 <div class="d-flex">
                   <div>
-                    <li>
-                      <a @click="() => handleFilmType(`Phiêu Lưu - Hành Động`)" class="dropdown-item">Phim Hành Động</a>
-                    </li>
-                    <li>
-                      <a @click="() => handleFilmType(`Kinh Dị - Ma`)" class="dropdown-item">Phim Kinh Dị</a>
-                    </li>
-                    <li>
-                      <a @click="() => handleFilmType(`Bí Ẩn - Siêu Nhiên`)" class="dropdown-item">Phim Siêu Nhiên</a>
-                    </li>
-                    <li>
-                      <a @click="() => handleFilmType(`Khoa Học - Viễn Tưởng`)" class="dropdown-item">Phim Khoa Học</a>
-                    </li>
-                    <li>
-                      <a @click="() => handleFilmType(`Tâm Lý - Tình Cảm`)" class="dropdown-item">Phim Tâm Lý</a>
+                    <li v-for="(type,index) in film?.listFilmType.slice(0,5)" :key="index">
+                      <a @click="() => handleFilmType(`${type?.typeName}`)" class="dropdown-item">{{ type?.typeName }}</a>
                     </li>
                   </div>
 
                   <div>
-                    <li>
-                      <a @click="() => handleFilmType(`Cổ Trang - Thần Thoại`)" class="dropdown-item">Phim Cổ Trang</a>
+                    <li v-for="(type,index) in film?.listFilmType.slice(5,10)" :key="index">
+                      <a @click="() => handleFilmType(`${type?.typeName}`)" class="dropdown-item">{{ type?.typeName }}</a>
                     </li>
-                    <li>
-                      <a @click="() => handleFilmType(`Phim Chiếu Rạp`)" class="dropdown-item">Phim Chiếu Rạp</a>
+
+                  </div>
+                  <div>
+                    <li v-for="(type,index) in film?.listFilmType.slice(10,15)" :key="index">
+                      <a @click="() => handleFilmType(`${type?.typeName}`)" class="dropdown-item">{{ type?.typeName }}</a>
                     </li>
-                    <li>
-                      <a @click="() => handleFilmType(`Hoạt Hình`)" class="dropdown-item">Phim Hoạt Hình</a>
+
+                  </div>
+                  <div>
+                    <li v-for="(type,index) in film?.listFilmType.slice(15,20)" :key="index">
+                      <a @click="() => handleFilmType(`${type?.typeName}`)" class="dropdown-item">{{ type?.typeName }}</a>
                     </li>
-                    <li>
-                      <a @click="() => handleFilmType(`Hài Hước`)" class="dropdown-item">Phim Hài Hước</a>
-                    </li>
-                    <li>
-                      <a @click="() => handleFilmType(`Tâm Lý - Tình Cảm`)" class="dropdown-item">Phim Lãng Mạng</a>
-                    </li>
+
                   </div>
                 </div>
 
@@ -132,50 +119,32 @@ onBeforeUpdate(() => {
               <ul class="dropdown_menu dropdown-menu ">
                 <div class="d-flex">
                   <div>
-                    <li>
-                      <a @click="() => handleCountry(`Âu - Mỹ`)" class="dropdown-item">Phim Âu Mỹ</a>
-                    </li>
-                    <li>
-                      <a @click="() => handleCountry(`Nhật Bản`)" class="dropdown-item">Phim Nhật Bản</a>
-                    </li>
-                    <li>
-                      <a @click="() => handleCountry(`Thái Lan`)"  class="dropdown-item">Phim Thái Lan</a>
-                    </li>
-                    <li>
-                      <a @click="() => handleCountry(`Hàn Quốc`)"  class="dropdown-item">Phim Hàn Quốc</a>
-                    </li>
-                    <li>
-                      <a @click="() => handleCountry(`Đài Loan`)"  class="dropdown-item">Phim Đài Loan</a>
+                    <li v-for="(type,index) in film?.listCountry.slice(0,6)" :key="index">
+                      <a @click="() => handleCountry(`${type?.country}`)" class="dropdown-item">{{ type?.country }}</a>
                     </li>
                   </div>
 
                   <div>
-                    <li>
-                      <a @click="() => handleCountry(`Việt Nam`)"  class="dropdown-item">Phim Việt Nam</a>
+                    <li v-for="(type,index) in film?.listCountry.slice(6,12)" :key="index">
+                      <a @click="() => handleCountry(`${type?.country}`)" class="dropdown-item">{{ type?.country }}</a>
                     </li>
-                    <li>
-                      <a @click="() => handleCountry(`Ấn Độ`)"  class="dropdown-item">Phim Ấn Độ</a>
+
+                  </div>
+                  <div>
+                    <li v-for="(type,index) in film?.listCountry.slice(16,22)" :key="index">
+                      <a @click="() => handleCountry(`${type?.country}`)" class="dropdown-item">{{ type?.country }}</a>
                     </li>
-                    <li>
-                      <a @click="() => handleCountry(`Hồng Công`)"  class="dropdown-item">Phim Hồng Công</a>
+
+                  </div>
+                  <div>
+                    <li v-for="(type,index) in film.listCountry?.slice(22,28)" :key="index">
+                      <a @click="() => handleCountry(`${type?.country}`)" class="dropdown-item">{{ type?.country }}</a>
                     </li>
-                    <li>
-                      <a @click="() => handleCountry(`Trung Quốc`)"  class="dropdown-item">Phim Trung Quốc</a>
-                    </li>
-                    <li>
-                      <a @click="() => handleCountry(`Philippines`)"  class="dropdown-item">Phim Philippines</a>
-                    </li>
+
                   </div>
                 </div>
 
               </ul>
-            </li>
-
-
-            <li v-if="user.userInformation.userName" class="nav-item">
-              <RouterLink class="nav-link" to='/checkout' href="#">
-                <h6>Thanh Toán </h6>
-              </RouterLink>
             </li>
 
           </ul>

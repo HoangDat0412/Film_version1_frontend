@@ -5,7 +5,7 @@ import AdminLayout from "../layout/AdminLayout/AdminLayoutView.vue"
 import LoginLayout from "../layout/LoginLayout/LoginLayout.vue"
 import FilmDetail from "../views/FilmDetail/FilmDetailView.vue"
 import WatchFilm from "../views/WatchFilm/WatchFilmView.vue"
-import SearchFilm from "../views/SearchFilm/SearchFilmView.vue"
+import SearchFilmView from "../views/SearchFilm/SearchFilmView.vue"
 import Profile from "../views/Profile/ProfileView.vue"
 import Login from "../views/Login/LoginView.vue"
 import Register from "../views/Register/RegisterView.vue"
@@ -43,7 +43,7 @@ const router = createRouter({
         },
         {
           path:"/search/:name/:page?",
-          component:SearchFilm,
+          component:SearchFilmView,
           name:"search"
         },
         {

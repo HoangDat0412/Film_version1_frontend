@@ -17,7 +17,10 @@ export const useFilmStore = defineStore("film", {
     loading:false,
     searchKey:"",
     totalView:0,
-    src:""
+    src:"",
+    listYear:[],
+    listFilmType:[],
+    listCountry:[]
   }),
   getters: {
     getListFilmSearch(state){
@@ -25,17 +28,38 @@ export const useFilmStore = defineStore("film", {
     }
   },
   actions: {
+    async setHomeLayoutInfomation(){
+      try {
+        const result = await service.get(`/film/listinfo`)
+        if(result.status === 200){
+          this.listCountry = result.data.listCountry.reverse();
+          this.listFilmType = result.data.listFilmType;
+          this.listYear = result.data.listYears.slice(0,18)
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
     async setListFilm(){
       try {
         const result = await service.get(`/film`)
         if(result.status === 200){
           this.listFilmUser = result.data
-          console.log(result.data);
           let totalView = 0;
           result?.data?.map((item)=>{
             totalView += item.views
           })
           this.totalView = totalView
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async setListFilmHome(){
+      try {
+        const result = await service.get(`/film/newfilm`)
+        if(result.status === 200){
+          this.listFilmUser = result.data
         }
       } catch (error) {
         console.log(error);
@@ -69,7 +93,6 @@ export const useFilmStore = defineStore("film", {
           this.listFilmSearch = result.data
           
           this.pagination = Math.ceil(this.listFilmSearch.length/5) ;
-          console.log(this.pagination);
           this.filmSearch = this.listFilmSearch.slice(0,5)
         }
       }catch(err){
@@ -202,7 +225,13 @@ export const useFilmStore = defineStore("film", {
         const result = await service.post(`/film/searchfilmtype`,data);
         if(result.status === 200){
           this.listFilmSearch = [...result.data.films]
-          this.pagination = result.data.pages
+
+          
+          let pag = []
+          for (let i = 0; i <= result.data.pages; i++) {
+            pag.push(i);
+          }
+          this.pagination = pag
         }
       }catch(err){
         this.listFilmSearch = []
@@ -214,7 +243,11 @@ export const useFilmStore = defineStore("film", {
         const result = await service.post(`/film/searchcountry`,data);
         if(result.status === 200){
           this.listFilmSearch = [...result.data.films]
-          this.pagination = result.data.pages
+          let pag = []
+          for (let i = 0; i <= result.data.pages; i++) {
+            pag.push(i);
+          }
+          this.pagination = pag
         }
       }catch(err){
         this.listFilmSearch = []
@@ -226,7 +259,13 @@ export const useFilmStore = defineStore("film", {
         const result = await service.post(`/film/searchyear`,data);
         if(result.status === 200){
           this.listFilmSearch = [...result.data.films]
-          this.pagination = result.data.pages
+          console.log("page length",result.data.pages);
+          let pag = []
+          for (let i = 0; i <= result.data.pages; i++) {
+            pag.push(i);
+          }
+          console.log("pag",pag);
+          this.pagination = pag
         }
       }catch(err){
         this.listFilmSearch = []

@@ -1,5 +1,5 @@
 <script setup>
-import { watchEffect, ref } from 'vue';
+import { watchEffect } from 'vue';
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import './home.scss';
@@ -32,8 +32,7 @@ const film = useFilmStore()
 const loading = useLoadingStore()
 watchEffect(async () => {
   loading.setLoading(true)
-  await film.setListFilm()
-  await new Promise((resolve) => setTimeout(resolve, 100));
+  await film.setListFilmHome()
   await film.getTopFilmView()
   loading.setLoading(false)
 })
@@ -47,9 +46,9 @@ const handleSearchYear = (year)=>{
   }
 }
 
-const year = ref([
-  2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024
-])
+// const year = ref([
+//   2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024
+// ])
 
 </script>
 
@@ -89,7 +88,7 @@ const year = ref([
           <h5 class="mb-2 mt-3" style="color: rgb(255, 150, 88);">Năm Phát Hành</h5>
           <hr>
           <div class="row">
-            <button @click="()=> handleSearchYear(i)" class="col-2 col-md-3 btn_year m-2" v-for="i in year" :key="i">{{ i }}</button>
+            <button @click="()=> handleSearchYear(i?.yRelease)" class="col-2 col-md-3 btn_year m-2" v-for="i in film.listYear" :key="i">{{ i?.yRelease }}</button>
           </div>
         </div>
 

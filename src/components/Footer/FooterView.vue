@@ -45,19 +45,19 @@ const handleCountry = async (type) => {
                 <div>
                   <h4 style="color: rgb(255, 150, 88);">Thể Loại Phim</h4>
                 <ul>
-                  <li><a @click="() => handleSearch(`Khoa Học - Viễn Tưởng`)">Phim Khoa Học</a></li>
+                  <li><a @click="() => handleSearch(`Khoa Học`)">Phim Khoa Học</a></li>
                 </ul>
                 <ul>
-                  <li><a @click="() => handleSearch(`Bí Ẩn - Siêu Nhiên`)">Phim Siêu Nhiên</a></li>
+                  <li><a @click="() => handleSearch(`Bí Ẩn`)">Phim Siêu Nhiên</a></li>
                 </ul>
                 <ul>
-                  <li><a @click="() => handleSearch(`Kinh Dị - Ma`)">Phim Kinh Dị</a></li>
+                  <li><a @click="() => handleSearch(`Kinh Dị`)">Phim Kinh Dị</a></li>
                 </ul>
                 <ul>
                   <li><a  @click="() => handleSearch(`Hài Hước`)">Phim Hài Hước</a></li>
                 </ul>
                 <ul>
-                  <li><a @click="() => handleSearch(`Phiêu Lưu - Hành Động`)">Phim Hành Động</a></li>
+                  <li><a @click="() => handleSearch(`Hành Động`)">Phim Hành Động</a></li>
                 </ul>
                 </div>
               </div>
@@ -65,7 +65,7 @@ const handleCountry = async (type) => {
                 <div>
                   <h4 style="color: rgb(255, 150, 88);">Quốc Gia</h4>
                 <ul>
-                  <li><a @click="() => handleCountry(`Âu - Mỹ`)">Phim Âu Mỹ</a></li>
+                  <li><a @click="() => handleCountry(`Âu Mỹ`)">Phim Âu Mỹ</a></li>
                 </ul>
                 <ul>
                   <li><a  @click="() => handleCountry(`Hàn Quốc`)">Phim Hàn Quốc</a></li>
