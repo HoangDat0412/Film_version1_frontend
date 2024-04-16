@@ -9,7 +9,7 @@ const route = useRoute()
 const loading = useLoadingStore()
 watchEffect(async () => {
   loading.setLoading(true)
-    await film.searchFilmType({
+    await film.searchFilm({
       name: route.params.name
     })
 
